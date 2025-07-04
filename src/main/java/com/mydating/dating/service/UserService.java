@@ -108,4 +108,35 @@ public ResponseEntity<?> findBestmatch(int id, int top) {
 }
 
 
+public ResponseEntity<?> findByAge(int age) {
+	List<User> users = userDao.findByAge(age);
+	if(users.isEmpty()) {
+		return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("age not found");    
+	}else {
+		return ResponseEntity.status(HttpStatus.OK).body(users);
+	}
+}
+
+public ResponseEntity<?> searchByName(String letters) {
+	List<User> user=userDao.searchByName("%"+letters+"%");
+	if(user.isEmpty()) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("no user found with letters:"+letters);
+	}else {
+		return ResponseEntity.status(HttpStatus.OK).body(user); 
+	}
+}
+
+public ResponseEntity<?> searchByEmail(String letters) {
+	List<User> user =userDao.searchByEmail("%"+letters+"%");
+	if(user.isEmpty()) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("no user found with letter:"+letters);
+	}else {
+	return ResponseEntity.status(HttpStatus.OK).body(user); 
+	}
+}
+
+
+
+
+
 }

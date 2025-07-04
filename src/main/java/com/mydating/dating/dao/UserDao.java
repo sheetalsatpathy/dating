@@ -16,7 +16,6 @@ public class UserDao {
 UserRepository userRepository;
 
 public User saveUser(User user) {
-
 	return userRepository.save(user);
 }
 
@@ -33,5 +32,24 @@ public List<User> findAllFemaleUser() {
 public Optional<User> findUserById(int id) {
 	
 	return userRepository.findById(id); 
-} 
+}
+
+
+
+public List<User> findByAge(int age) {
+	return userRepository.findByAge(age);
+}
+
+
+public List<User> searchByName(String letters) {
+	
+	return userRepository.searchByName(letters);
+}
+
+public List<User> searchByEmail(String letters) {
+	
+	return userRepository.searchByEmail(letters); 
+}
+
+
 }

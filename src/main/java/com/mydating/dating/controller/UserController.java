@@ -34,4 +34,16 @@ public ResponseEntity<?>findAllFemaleUsers(){
 public ResponseEntity<?> findBestMarch(@PathVariable int id,@PathVariable int top){
 	return userService.findBestmatch(id,top); 
 }
+@GetMapping("/users/age/{age}")
+public ResponseEntity<?> findByAge(@PathVariable int age){ 
+	return userService.findByAge(age);
+}
+@GetMapping("/users/search/name/{letters}")  
+public ResponseEntity<?> searchByName(@PathVariable String letters){
+	return userService.searchByName(letters); 
+}
+@GetMapping("/users/search/email/{letters}")
+public ResponseEntity<?> searchByEmail(@PathVariable String letters){
+return userService.searchByEmail(letters);
+}
 }
